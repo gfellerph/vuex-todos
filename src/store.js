@@ -1,16 +1,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import cuid from 'cuid';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    todos: [],
+    todosById: {},
     activeFilter: null
   },
   mutations: {
     ADD_TODO (state, action) {
-      state.todos.push({text: action.text, toggled: false});
+      const id = cuid();
+      state.todosById = Object.assign({}, state.todosById, {
+        [id]: {id: id, text: action.text, toggled: false}
+      });
     },
 
     TOGGLE_TODO (state, action) {
