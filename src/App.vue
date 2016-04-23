@@ -7,8 +7,6 @@
 <script>
   import todo from 'components/todo';
 
-  console.log(todo);
-
   export default {
     components: {
       todo
