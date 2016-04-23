@@ -6,11 +6,13 @@
 
 <script>
   import todo from 'components/todo';
+  import store from './store';
 
   export default {
     components: {
       todo
-    }
+    },
+    store: store
   }
 </script>
 
