@@ -1,12 +1,16 @@
 <template>
   <p>
     <input type="text" v-model="newTodo">
-    <button v-on:click="addTodo" v-bind:disabled="disableAddTodo">add</button>
+    <button
+      v-on:click="addTodo"
+      v-bind:disabled="disableAddTodo"
+    >add</button>
   </p>
 </template>
 
 <script>
   import Vue from 'vue';
+  import store from '../../store';
 
   export default Vue.extend({
     data: function () {
@@ -21,7 +25,9 @@
     },
     methods: {
       addTodo: function () {
-        this.$dispatch('ADD_TODO', this.newTodo);
+        store.dispatch('ADD_TODO', {
+          text: this.newTodo
+        });
         this.newTodo = '';
       }
     }
