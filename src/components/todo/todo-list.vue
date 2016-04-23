@@ -11,12 +11,14 @@
   import todoItem from './todo-item';
 
   export default Vue.extend({
-    props: {
-      todos: Array,
-      activeFilter: null
-    },
     components: {
       todoItem
+    },
+    vuex: {
+      getters: {
+        todos: state => state.todos,
+        activeFilter: state => state.activeFilter
+      }
     }
   });
 </script>
