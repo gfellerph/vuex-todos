@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="todo in todos | filterBy activeFilter in 'toggled'">
+    <li v-for="(index, todo) in todos | filterBy activeFilter in 'toggled'">
       <todo-item v-bind:todo="todo"></todo-item>
     </li>
   </ul>
@@ -16,7 +16,7 @@
     },
     vuex: {
       getters: {
-        todos: state => state.todos,
+        todos: state => state.todosById,
         activeFilter: state => state.activeFilter
       }
     }
