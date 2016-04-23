@@ -9,9 +9,11 @@
     props: {
       todo: Object
     },
-    methods: {
-      toggleTodo: function () {
-        this.todo.toggled = !this.todo.toggled;
+    vuex: {
+      actions: {
+        toggleTodo: function ({dispatch}) {
+          dispatch('TOGGLE_TODO', {todo: this.todo});
+        }
       }
     }
   });
