@@ -16,11 +16,6 @@
   }
 </script>
 
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    font-family: 'roboto';
-    font-size: 18px;
-  }
+<style lang="sass">
+  @import '/styles/shared';
 </style>
