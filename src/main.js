@@ -1,8 +1,24 @@
 import Vue from 'vue'
-import App from './App'
+import Router from 'vue-router'
+import TodoApp from './App'
 
-/* eslint-disable no-new */
-new Vue({
-  el: 'body',
-  components: { App }
-})
+var Home = Vue.extend({
+    template: '<p>This is Sparta!</p>'
+});
+
+var App = Vue.extend({});
+
+var router = new Router({
+    hashbang: false
+});
+
+router.map({
+    '/home': {
+        component: Home
+    },
+    '/todo': {
+        component: TodoApp
+    }
+});
+
+router.start(App, '#app');
