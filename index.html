@@ -6,7 +6,13 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <app></app>
-    <!-- built files will be auto injected -->
+    <div id="app">
+        <nav>
+          <a v-link="{path: '/home'}">Sparta</a>
+          <a v-link="{path:'/todo'}">Todo</a>
+        </nav>
+        <router-view></router-view>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
   </body>
 </html>
