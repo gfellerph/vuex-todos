@@ -2,17 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>vuex-todos</title>
+
+    <!-- CDN Styles -->
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
-    <div id="app">
-        <nav>
-          <a v-link="{path: '/home'}">Sparta</a>
-          <a v-link="{path:'/todo'}">Todo</a>
-        </nav>
-        <router-view></router-view>
+
+    <!-- Vue.js entry point -->
+    <div id="vue-app">
+      <app></app>
     </div>
+
+    <!-- CDN Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
   </body>
 </html>
