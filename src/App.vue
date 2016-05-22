@@ -1,21 +1,23 @@
 <template>
-  <div id="app">
-    <todo></todo>
+  <div id="vue-app">
+    <navigation></navigation>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import todo from 'components/todo';
-  import store from './store';
+  import navigation from 'components/navigation';
+  import store from 'src/store';
 
   export default {
     components: {
-      todo
+      navigation
     },
     store: store
   }
 </script>
 
 <style lang="sass">
-  @import '/styles/shared';
+  @import 'styles/materialize.config.scss';
+  @import 'styles/shared';
 </style>
