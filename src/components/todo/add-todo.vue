@@ -5,17 +5,22 @@
       v-on:click="addTodo"
       v-bind:disabled="disableAddTodo"
     >add</button>
+    <errors :errors="err"></errors>
   </p>
 </template>
 
 <script>
   import Vue from 'vue';
-  import store from '../../store';
+  import store from 'src/store';
+  import firebase from 'src/firebase';
+  import Todo from 'models/Todo';
+  import errors from 'components/errors/errors';
 
   export default Vue.extend({
     data: function () {
       return {
-        newTodo: ''
+        newTodo: '',
+        err: []
       }
     },
     computed: {
@@ -25,11 +30,20 @@
     },
     methods: {
       addTodo: function () {
-        store.dispatch('ADD_TODO', {
-          text: this.newTodo
-        });
+        const newTodo = new Todo(this.newTodo);
+        firebase
+          .database()
+          .ref('todos/' + newTodo.id)
+          .set(newTodo)
+          .catch(err => {
+            // Write failed, print error
+            this.err.push(err.message);
+          });
         this.newTodo = '';
       }
+    },
+    components: {
+      errors
     }
   });
 </script>
