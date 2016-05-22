@@ -24,7 +24,6 @@
   });
 </script>
 
-<style lang="less">
   li {
     
     span {
