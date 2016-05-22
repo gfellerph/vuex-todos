@@ -17,8 +17,10 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
+      'components': path.resolve(__dirname, '../src/components'),
+      'models': path.resolve(__dirname, '../src/models'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'styles': path.resolve(__dirname, '../src/styles')
     }
   },
   resolveLoader: {
@@ -59,6 +61,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.scss$/,
+        loader: 'sass-loader'
       }
     ]
   },
@@ -66,6 +72,7 @@ module.exports = {
     loaders: utils.cssLoaders()
   },
   externals: {
-    'vue': 'Vue'
+    'vue': 'Vue',
+    'firebase': 'firebase'
   }
 }
