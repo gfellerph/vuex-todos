@@ -24,12 +24,8 @@
   });
 </script>
 
-  li {
-    
-    span {
-      padding: 5px 15px;
-      display: block;
-      cursor: pointer;
-    }
+<style lang="scss" local>
+  ul {
+    list-style: none;
   }
 </style>
