@@ -1,24 +1,5 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import TodoApp from './App'
+import App from 'src/App';
+import router from 'src/router';
 
-var Home = Vue.extend({
-    template: '<p>This is Sparta!</p>'
-});
-
-var App = Vue.extend({});
-
-var router = new Router({
-    hashbang: false
-});
-
-router.map({
-    '/home': {
-        component: Home
-    },
-    '/todo': {
-        component: TodoApp
-    }
-});
-
-router.start(App, '#app');
+// Mount app with router
+router.start(App, '#vue-app');
