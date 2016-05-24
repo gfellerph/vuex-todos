@@ -1,39 +1,38 @@
 <template>
-  <p>
-    <label for="all">
-      <input
-        value="null"
-        :checked="activeFilter==null"
-        @change="setFilter"
-        id="all"
-        type="radio"
-        name="todoFilter"
-      />
-      <span>all</span>
-    </label>
-    <label for="toggled">
-      <input
-        value="true"
-        :checked="activeFilter==true"
-        @change="setFilter"
-        id="toggled"
-        type="radio"
-        name="todoFilter"
-      />
-      <span>toggled</span>
-    </label>
-    <label for="untoggled">
-      <input
-        value="false"
-        :checked="activeFilter==false"
-        @change="setFilter"
-        id="untoggled"
-        type="radio"
-        name="todoFilter"
-      />
-      <span>untoggled</span>
-    </label>
-  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li>
+            <label for="toggled">
+              <input
+                value="false"
+                :checked="activeFilter==false"
+                @change="setFilter"
+                id="toggled"
+                type="radio"
+                name="todoFilter"
+              />
+              <span>todo</span>
+            </label>
+          </li>
+          <li>
+            <label for="untoggled">
+              <input
+                value="true"
+                :checked="activeFilter==true"
+                @change="setFilter"
+                id="untoggled"
+                type="radio"
+                name="todoFilter"
+              />
+              <span>done</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
