@@ -1,5 +1,9 @@
 <template>
-  <span v-on:click="toggleTodo" v-bind:class="{toggled:todo.toggled}">{{todo.text}}</span>
+  <span
+    v-on:click="toggleTodo"
+    v-bind:class="{toggled:todo.toggled}"
+    class="todo-item card-panel"
+  >{{todo.text}}</span>
 </template>
 
 <script>
@@ -19,7 +23,12 @@
   });
 </script>
 
-<style>
+<style lang="scss">
+  .todo-item {
+    cursor: pointer;
+    display: block;
+  }
+
   .toggled {
     text-decoration: line-through;
   }
