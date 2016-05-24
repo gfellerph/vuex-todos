@@ -3,13 +3,15 @@
 @import "~materialize-css/sass/components/mixins";
 
 // all colors:
-// @import "~materialize-css/sass/components/color";
+//@import "~materialize-css/sass/components/color";
 
 // BEGIN: only specific colors
 @import "~vue-materialize/sass/color";
 // include colors you need
-@include do("include-color","black", "base");
+@include do("include-color","teal", "base");
+@include do("include-color","pink", "base");
 @include do("include-color","white", "base");
+@include do("include-color","black", "base");
 @import "~vue-materialize/sass/colorProcessor";
 // END: only specific colors
 
@@ -24,8 +26,8 @@
 
 // css only, no JS needed for these
 // activate only what you need
-$roboto-font-path: "~materialize-css/fonts/roboto/";
-@import "~materialize-css/sass/components/roboto";
+//$roboto-font-path: "~materialize-css/fonts/roboto/";
+//@import "~materialize-css/sass/components/roboto";
 @import "~materialize-css/sass/components/icons-material-design"; // icons are no long included in materializeCSS
 @import "~materialize-css/sass/components/typography";
 @import "~materialize-css/sass/components/buttons";
@@ -33,8 +35,8 @@ $roboto-font-path: "~materialize-css/fonts/roboto/";
 @import "~materialize-css/sass/components/navbar";
 @import "~materialize-css/sass/components/preloader";
 @import "~vue-materialize/sass/forms";
-@import "~materialize-css/sass/components/forms/checkboxes";
-@import "~materialize-css/sass/components/forms/radio-buttons";
+//@import "~materialize-css/sass/components/forms/checkboxes";
+//@import "~materialize-css/sass/components/forms/radio-buttons";
 
 // css for js modules
 // activate only what you need
@@ -43,8 +45,8 @@ $roboto-font-path: "~materialize-css/fonts/roboto/";
 @import "~materialize-css/sass/components/dropdown";
 @import "~materialize-css/sass/components/modal";
 @import "~materialize-css/sass/components/collapsible";
-@import "~materialize-css/sass/components/table_of_contents"; // scrollspy
+//@import "~materialize-css/sass/components/table_of_contents"; // scrollspy
 @import "~materialize-css/sass/components/forms/input-fields";
-@import "~materialize-css/sass/components/forms/switches";
+//@import "~materialize-css/sass/components/forms/switches";
 @import "~materialize-css/sass/components/toast";
-@import "~materialize-css/sass/components/tooltip";
+//@import "~materialize-css/sass/components/tooltip";
