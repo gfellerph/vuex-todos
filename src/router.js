@@ -19,6 +19,9 @@ router.map({
     },
     '/todo': {
       component: TodoApp
+    },
+    '/signup': {
+      component: SignUp
     }
 });
 
