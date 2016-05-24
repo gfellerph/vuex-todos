@@ -1,3 +1,3 @@
 <template>
-  <p>This is Sparta!</p>
+  <p class="container">This is Sparta!</p>
 </template>
