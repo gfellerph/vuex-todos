@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="container">
     <li v-for="todo in todos">
       <todo-item v-bind:todo="todo"></todo-item>
     </li>
@@ -17,7 +17,7 @@
     vuex: {
       getters: {
         todos: state => {
-          return state.todos.filter(todo => state.activeFilter === null || todo.toggled === state.activeFilter)
+          return state.todos.filter(todo => todo.toggled === state.activeFilter)
         }
       }
     }
