@@ -17,7 +17,7 @@ export default {
   // Default state
   state: {
     todos: [],
-    activeFilter: null,
+    activeFilter: false,
     todosLoading: true
   },
 
