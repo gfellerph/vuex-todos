@@ -1,20 +1,28 @@
 <template>
-  <p>
-    <input type="text" v-model="newTodo">
-    <button
-      v-on:click="addTodo"
-      v-bind:disabled="disableAddTodo"
-    >add</button>
-    <errors :errors="err"></errors>
-  </p>
+  <div class="container">
+    <div class="input-field card-panel">
+      <input id="add_todo" type="text" v-model="newTodo" class="validate">
+      <label for="add_todo">add todo</label>
+      <p class="right-align">
+        <waves :color="'white'">
+          <button
+            class="teal btn right-align"
+            v-on:click="addTodo"
+            v-bind:disabled="disableAddTodo"
+          >add</button>
+        </waves>
+      </p>
+      <errors :errors="err"></errors>
+    </div>
+  </div>
 </template>
 
 <script>
   import Vue from 'vue';
-  import store from 'src/store';
   import firebase from 'src/firebase';
   import Todo from 'models/Todo';
   import errors from 'components/errors/errors';
+  import waves from 'vue-materialize/waves';
 
   export default Vue.extend({
     data: function () {
@@ -43,31 +51,16 @@
       }
     },
     components: {
-      errors
+      errors,
+      waves
     }
   });
 </script>
 
 <style lang="less">
-  input[type="text"] {
-    border: none;
-    background: none;
-    outline: none;
-    font-size: inherit;
-    
-    border-bottom: 1px solid black;
-  }
-
   button {
-    background: black;
-    color: white;
-    border: none;
-    padding: 3px 15px;
-    transition: background 150ms;
-    font-size: inherit;
-
     &[disabled] {
-      background: rgb(200,200,200);
+      background: rgb(200,200,200) !important;
     }
   }
 </style>
