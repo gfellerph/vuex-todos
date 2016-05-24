@@ -1,8 +1,8 @@
 <template>
   <div>
-    <spinner v-if="loading||!loading"></spinner>
-    <add-todo></add-todo>
+    <spinner v-if="loading"></spinner>
     <todo-filter></todo-filter>
+    <add-todo></add-todo>
     <todo-list></todo-list>
   </div>
 </template>
