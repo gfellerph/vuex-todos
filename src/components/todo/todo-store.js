@@ -24,19 +24,19 @@ export default {
   mutations: {
 
     ADD_TODO: (state, action) => {
-      state.todo.todos.push(action.todo);
+      state.todos.push(action.todo);
     },
 
     TOGGLE_TODO: (state, action) => {
-      action.todo.toggled = !action.todo.toggled;
+      action.toggled = !action.toggled;
     },
 
     SET_FILTER: (state, action) => {
-      state.todo.activeFilter = action.activeFilter;
+      state.activeFilter = action.activeFilter;
     },
 
     DELETE_TODO: (state, action) => {
-      state.todo.todos = state.todo.todos.filter(todo => todo.id != action.id);
+      state.todos = state.todos.filter(todo => todo.id != action.id);
     },
   }
 }
