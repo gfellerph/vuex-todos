@@ -3,6 +3,7 @@ import TodoApp from 'components/todo';
 import Home from 'components/home';
 import NotFound from 'components/errors/404';
 import SignUp from 'components/authentication/signup';
+import SignUpSuccess from 'components/authentication/signup-success';
 
 // Router options
 var router = new Router({
@@ -24,6 +25,9 @@ router.map({
     },
     '/signup': {
       component: SignUp
+    },
+    '/signup-success': {
+      component: SignUpSuccess
     }
 });
 
