@@ -1,6 +1,5 @@
 <template>
   <div>
-    <spinner v-if="loading"></spinner>
     <todo-filter></todo-filter>
     <add-todo></add-todo>
     <todo-list></todo-list>
@@ -15,11 +14,6 @@
   import spinner from 'components/shared/spinner';
 
   export default Vue.extend({
-    vuex: {
-      getters: {
-        loading: state => state.todosLoading
-      }
-    },
     components: {
       spinner,
       addTodo,
