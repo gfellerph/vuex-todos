@@ -1,5 +1,5 @@
 <template>
-  <nav class="teal">
+  <nav class="teal fixed">
     <div class="nav-wrapper container">
       <a v-link="{path: '/', exact: true}" class="brand-logo">
         <i class="material-icons">done_all</i>
@@ -28,6 +28,14 @@
   }
 
   nav {
+    &.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
     a + a {
       margin-left: 1em;
     }
