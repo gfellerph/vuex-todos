@@ -18,6 +18,5 @@
 </script>
 
 <style lang="sass">
-  @import 'styles/materialize.config.scss';
   @import 'styles/shared';
 </style>
