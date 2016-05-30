@@ -15,8 +15,9 @@
 </script>
 
 <style>
-  .errors {
-    font-size: 12px;
+  .errors,
+  .error {
+    font-size: 14px;
     color: red;
   }
 </style>
