@@ -17,7 +17,7 @@
     vuex: {
       getters: {
         todos: state => {
-          return state.todos.filter(todo => todo.toggled === state.activeFilter)
+          return state.todo.todos.filter(todo => todo.toggled === state.todo.activeFilter)
         }
       }
     }

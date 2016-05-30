@@ -24,7 +24,7 @@ export default {
   mutations: {
 
     ADD_TODO: (state, action) => {
-      state.todos.push(action.todo);
+      state.todo.todos.push(action.todo);
     },
 
     TOGGLE_TODO: (state, action) => {
@@ -32,11 +32,11 @@ export default {
     },
 
     SET_FILTER: (state, action) => {
-      state.activeFilter = action.activeFilter;
+      state.todo.activeFilter = action.activeFilter;
     },
 
     DELETE_TODO: (state, action) => {
-      state.todos = state.todos.filter(todo => todo.id != action.id);
+      state.todo.todos = state.todo.todos.filter(todo => todo.id != action.id);
     },
   }
 }

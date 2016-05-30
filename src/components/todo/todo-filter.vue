@@ -41,7 +41,7 @@
   export default Vue.extend({
     vuex: {
       getters: {
-        activeFilter: state => state.activeFilter
+        activeFilter: state => state.todo.activeFilter
       },
       actions: {
         setFilter: ({dispatch}, e) => {
