@@ -17,15 +17,13 @@ export default {
   // Default state
   state: {
     todos: [],
-    activeFilter: false,
-    todosLoading: true
+    activeFilter: false
   },
 
   // Reducers
   mutations: {
 
     ADD_TODO: (state, action) => {
-      state.todosLoading = false;
       state.todos.push(action.todo);
     },
 
@@ -39,7 +37,6 @@ export default {
 
     DELETE_TODO: (state, action) => {
       state.todos = state.todos.filter(todo => todo.id != action.id);
-      if (state.todos.length <= 0) state.todosLoading = true;
     },
   }
 }
