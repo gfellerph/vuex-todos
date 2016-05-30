@@ -4,13 +4,11 @@
       <input id="add_todo" type="text" v-model="newTodo" class="validate">
       <label for="add_todo">add todo</label>
       <p class="right-align">
-        <waves :color="'white'">
-          <button
-            class="teal btn right-align"
-            v-on:click="addTodo"
-            v-bind:disabled="disableAddTodo"
-          >add</button>
-        </waves>
+        <button
+          class="teal btn right-align"
+          v-on:click="addTodo"
+          v-bind:disabled="disableAddTodo"
+        >add</button>
       </p>
       <errors :errors="err"></errors>
     </div>
@@ -22,7 +20,6 @@
   import firebase from 'src/firebase';
   import Todo from 'models/Todo';
   import errors from 'components/errors/errors';
-  import waves from 'vue-materialize/waves';
 
   export default Vue.extend({
     data: function () {
@@ -51,8 +48,7 @@
       }
     },
     components: {
-      errors,
-      waves
+      errors
     }
   });
 </script>
