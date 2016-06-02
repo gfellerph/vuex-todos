@@ -14,7 +14,7 @@ export default {
     },
 
     TOGGLE_TODO: (state, action) => {
-      action.toggled = !action.toggled;
+      action.todo.toggled = !action.todo.toggled;
     },
 
     SET_FILTER: (state, action) => {
