@@ -1,7 +1,9 @@
 <template>
   <div id="vue-app">
     <navigation></navigation>
-    <router-view></router-view>
+    <div class="content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -17,6 +19,10 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="scss">
   @import 'styles/shared';
+
+  .content {
+    padding-top: 64px;
+  }
 </style>
