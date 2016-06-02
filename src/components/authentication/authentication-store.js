@@ -10,7 +10,6 @@ export default {
 		LOGIN: (state, action) => {
 			state.loggedIn = true;
 			state.user = action.user;
-			router.go('/todo');
 		},
 
 		LOGOUT: (state, action) => {
