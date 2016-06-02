@@ -1,10 +1,13 @@
 <template>
-  <nav class="teal fixed">
+  <nav class="teal fixed nav">
     <div class="nav-wrapper container">
       <a v-link="{path: '/', exact: true}" class="brand-logo">
         <i class="material-icons">done_all</i>
       </a>
-      <account class="right"></account>
+      <popup class="right" anchor="right">
+        <account slot="label"></account>
+        <component slot="content" :is="currentView"></component>
+      </popup>
       <ul class="right hide-on-med-and-down">
         <li v-link-active><a v-link="{path: '/', exact: true}">Sparta</a></li>
         <li v-link-active><a v-link="{path: '/todo'}">Todo</a></li>
@@ -19,10 +22,26 @@
 
 <script>
   import account from 'components/authentication/account';
+  import signin from 'components/authentication/signin';
+  import profile from 'components/authentication/profile';
+  import popup from 'components/shared/popup';
 
   export default {
+    computed: {
+      currentView () {
+        return this.loggedIn ? 'profile' : 'signin';
+      }
+    },
+    vuex: {
+      getters: {
+        loggedIn: (state) => state.auth.loggedIn
+      }
+    },
     components: {
-      account
+      account,
+      popup,
+      signin,
+      profile
     }
   }
 </script>
