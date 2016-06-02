@@ -20,9 +20,5 @@
 </script>
 
 <style lang="scss">
-  @import 'styles/shared';
-
-  .content {
-    padding-top: 64px;
-  }
+  @import 'styles/index';
 </style>
