@@ -44,6 +44,7 @@
     },
     beforeDestroy () {
       this.todosRef.off();
+      store.dispatch('RESET_TODOS');
     }
   });
 </script>
