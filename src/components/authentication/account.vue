@@ -1,12 +1,10 @@
 <template>
 	<div class="account">
-		<a href="#">
-			<img
-				v-if="loggedIn"
-				class="circle account-image"
-				:src="gravatar"
-				alt="">
-		</a>
+		<img
+			v-if="loggedIn"
+			class="circle account-image"
+			:src="gravatar"
+			alt="">
 		<a
 			v-link="{path: '/signin'}"
 			v-if="!loggedIn"
@@ -19,21 +17,39 @@
 <script>
 	import md5 from 'md5';
 	import router from 'src/router';
+	import User from 'models/User';
+	import firebase from 'src/firebase';
+	import store from 'src/store';
 
 	export default {
 	  computed: {
 	    gravatar () {
-	      return 'https://www.gravatar.com/avatar/' + this.md5email;
+	      return 'https://www.gravatar.com/avatar/' + md5(this.user.email);
 	    }
 	  },
 	  methods: {
 	  	login: () => {
-	  		router.go('/signin');
+	  		//router.go('/signin');
 	  	}
+	  },
+	  created () {
+
+	  	  // Listen to auth changes and dispatch accordingly
+	      firebase
+	          .auth()
+	          .onAuthStateChanged(user => {
+	              if (user) {
+	                  store.dispatch('LOGIN', {
+	                      user: new User(user)
+	                  });
+	              } else {
+	                  store.dispatch('LOGOUT');
+	              }
+	          });
 	  },
 	  vuex: {
 	    getters: {
-	      md5email: state => md5(state.auth.user.email),
+	      user: state => state.auth.user,
 	      loggedIn: state => state.auth.loggedIn
 	    }
 	  }
