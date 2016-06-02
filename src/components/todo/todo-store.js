@@ -24,5 +24,10 @@ export default {
     DELETE_TODO: (state, action) => {
       state.todos = state.todos.filter(todo => todo.id != action.id);
     },
+
+    RESET_TODOS: (state, action) => {
+      state.todos = [];
+      state.activeFilter = false;
+    }
   }
 }
