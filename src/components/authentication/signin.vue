@@ -1,6 +1,6 @@
 <template>
     <form novalidate class="container" action="" method="post">
-        <div class="card-panel login-form">
+        <div class="login-form">
             <div class="row">
                 <div class="input-field col s12">
                     <input
@@ -42,10 +42,8 @@
 </template>
 
 <script>
-    import store from 'src/store';
     import firebase from 'src/firebase';
     import errors from 'components/errors/errors';
-    import User from 'models/User';
     import spinner from 'components/shared/spinner';
 
 	export default {
@@ -73,7 +71,6 @@
                     .then(() => {
                         this.errors = [];
                         this.isLoading = false;
-                        store.dispatch('LOGIN', {user: new User(firebase.auth().currentUser)});
                     })
                     .catch(err => {
                         this.isLoading = false;
