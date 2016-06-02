@@ -4,6 +4,7 @@
       <a v-link="{path: '/', exact: true}" class="brand-logo">
         <i class="material-icons">done_all</i>
       </a>
+      <account class="right"></account>
       <ul class="right hide-on-med-and-down">
         <li v-link-active><a v-link="{path: '/', exact: true}">Sparta</a></li>
         <li v-link-active><a v-link="{path: '/todo'}">Todo</a></li>
@@ -16,15 +17,20 @@
   </nav>
 </template>
 
-<style lang="scss" local>
+<script>
+  import account from 'components/authentication/account';
+
+  export default {
+    components: {
+      account
+    }
+  }
+</script>
+
+<style lang="scss">
   a {
     color: inherit;
     text-decoration: none;
-
-    &.v-link-active {
-      text-decoration: underline;
-      font-weight: bold;
-    }
   }
 
   nav {
