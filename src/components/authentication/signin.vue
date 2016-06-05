@@ -28,6 +28,10 @@
             <errors :errors="errors"></errors>
 
             <p class="right-align">
+                <a
+                    v-link="'signup'"
+                    class="btn teal waves-effect"
+                >sign up</a>
                 <button
                     class="btn teal waves-effect waves-light"
                     type="submit"
