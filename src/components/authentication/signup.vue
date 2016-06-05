@@ -63,7 +63,16 @@
                     <errors :errors="errors"></errors>
 
                     <p class="right-align">
-                        <button :disabled="$sign_up.invalid || loading" @click="submit" type="submit" class="btn teal waves-effect waves-light">Sign up</button>
+                        <a
+                            v-link="'signin'"
+                            class="btn teal waves-effect"
+                        >sign in</a>
+                        <button
+                            :disabled="$sign_up.invalid || loading"
+                            @click="submit"
+                            type="submit"
+                            class="btn teal waves-effect waves-light"
+                        >Sign up</button>
                     </p>
                 </div>
             </form>
