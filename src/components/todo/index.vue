@@ -1,6 +1,5 @@
 <template>
   <div>
-    <todo-filter></todo-filter>
     <add-todo></add-todo>
     <todo-list></todo-list>
   </div>
@@ -10,8 +9,6 @@
   import Vue from 'vue';
   import addTodo from './add-todo';
   import todoList from './todo-list';
-  import todoFilter from './todo-filter';
-  import spinner from 'components/shared/spinner';
   import firebase from 'src/firebase';
   import store from 'src/store';
 
@@ -22,10 +19,8 @@
         }
     },
     components: {
-      spinner,
       addTodo,
-      todoList,
-      todoFilter
+      todoList
     },
     created () {
 
@@ -38,8 +33,12 @@
         store.dispatch('ADD_TODO', {todo: snapshot.val()});
       });
 
+      this.todosRef.on('child_changed', snapshot => {
+        store.dispatch('TOGGLE_TODO', {todo: snapshot.val()});
+      });
+
       this.todosRef.on('child_removed', snapshot => {
-        store.dispatch('DELETE_TODO', {id: snapshot.val().id});
+        store.dispatch('DELETE_TODO', {todo: snapshot.val()});
       });
     },
     beforeDestroy () {
