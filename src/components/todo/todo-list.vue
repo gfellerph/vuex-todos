@@ -7,10 +7,9 @@
 </template>
 
 <script>
-  import Vue from 'vue';
   import todoItem from './todo-item';
 
-  export default Vue.extend({
+  export default {
     components: {
       todoItem
     },
@@ -22,7 +21,7 @@
         }
       }
     }
-  });
+  };
 </script>
 
 <style lang="scss" local>
