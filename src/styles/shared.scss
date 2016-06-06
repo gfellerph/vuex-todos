@@ -6,11 +6,23 @@ body {
 .center-center {
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 64px);
     justify-content: center;
     align-items: center;
 }
 
 .content {
     padding-top: 64px;
+}
+
+.flex {
+  display: flex;
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
 }
