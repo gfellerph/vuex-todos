@@ -1,6 +1,6 @@
 <template>
 	<div class="profile grey-text text-darken-4">
-   <h2>{{user.email}}</h2>
+   <h5>{{user.email}}</h5>
    <p class="grey-text text-lighten-2">{{user.uid}}</p>
    <p class="right-align">
      <button
@@ -32,6 +32,6 @@
 
 <style>
   .profile {
-    padding: 0 2rem;
+    line-height: 1.5;
   }
 </style>
