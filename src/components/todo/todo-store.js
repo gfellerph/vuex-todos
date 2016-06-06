@@ -14,7 +14,9 @@ export default {
     },
 
     TOGGLE_TODO: (state, action) => {
-      action.todo.toggled = !action.todo.toggled;
+      state.todos = state.todos.map(todo => {
+        return (todo.id == action.todo.id) ? action.todo : todo;
+      });
     },
 
     SET_FILTER: (state, action) => {
@@ -22,7 +24,7 @@ export default {
     },
 
     DELETE_TODO: (state, action) => {
-      state.todos = state.todos.filter(todo => todo.id != action.id);
+      state.todos = state.todos.filter(todo => todo.id != action.todo.id);
     },
 
     RESET_TODOS: (state, action) => {
