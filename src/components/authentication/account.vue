@@ -1,15 +1,17 @@
 <template>
 	<div class="account">
-		<img
-			v-if="loggedIn"
-			class="circle account-image"
-			:src="gravatar"
-			alt="">
+		<popup v-if="loggedIn" class="right" anchor="right">
+			<img
+				slot="label"
+				class="circle account-image"
+				:src="gravatar"
+				alt="">
+		  <profile slot="content"></profile>
+		</popup>
 		<a
 			v-link="{path: '/signin'}"
 			v-if="!loggedIn"
-			class="account-login btn pink waves-effect waves-light"
-			@click="login"
+			class="account-login btn green waves-effect waves-light"
 		>Login</a>
 	</div>
 </template>
@@ -20,17 +22,14 @@
 	import User from 'models/User';
 	import firebase from 'src/firebase';
 	import store from 'src/store';
+	import profile from 'components/authentication/profile';
+	import popup from 'components/shared/popup';
 
 	export default {
 	  computed: {
 	    gravatar () {
 	      return 'https://www.gravatar.com/avatar/' + md5(this.user.email);
 	    }
-	  },
-	  methods: {
-	  	login: () => {
-	  		//router.go('/signin');
-	  	}
 	  },
 	  created () {
 
@@ -52,6 +51,10 @@
 	      user: state => state.auth.user,
 	      loggedIn: state => state.auth.loggedIn
 	    }
+	  },
+	  components: {
+	  	profile,
+	  	popup
 	  }
 	}
 </script>
