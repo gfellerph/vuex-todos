@@ -1,55 +1,40 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <ul class="tabs">
-          <li>
-            <label for="toggled">
-              <input
-                value="false"
-                :checked="activeFilter==false"
-                @change="setFilter"
-                id="toggled"
-                type="radio"
-                name="todoFilter"
-              />
-              <span>todo</span>
-            </label>
-          </li>
-          <li>
-            <label for="untoggled">
-              <input
-                value="true"
-                :checked="activeFilter==true"
-                @change="setFilter"
-                id="untoggled"
-                type="radio"
-                name="todoFilter"
-              />
-              <span>done</span>
-            </label>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="switch">
+    <label>
+      <span>Open</span>
+      <sup>{{openCount}}</sup>
+      <input
+        type="checkbox"
+        @change="setFilter"
+      >
+      <span class="lever"></span>
+      <span>Closed</span>
+      <sup>{{closedCount}}</sup>
+    </label>
   </div>
 </template>
 
 <script>
-  import Vue from 'vue';
-
-  export default Vue.extend({
+  export default {
+    computed: {
+      openCount () {
+        return this.todos.filter(todo => !todo.toggled).length;
+      },
+      closedCount () {
+        return this.todos.filter(todo => todo.toggled).length;
+      }
+    },
     vuex: {
       getters: {
-        activeFilter: state => state.todo.activeFilter
+        todos: state => state.todo.todos
       },
       actions: {
-        setFilter: ({dispatch}, e) => {
-          dispatch('SET_FILTER', {activeFilter: JSON.parse(e.target.value)});
+        setFilter: function ({dispatch}, e) {
+          dispatch('SET_FILTER', {activeFilter: e.currentTarget.checked});
         }
       }
     }
-  });
+  };
 </script>
 
 <style lang="less">
