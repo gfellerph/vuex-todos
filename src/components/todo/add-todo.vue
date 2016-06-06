@@ -1,16 +1,27 @@
 <template>
   <div class="container">
-    <div class="input-field card-panel">
-      <input id="add_todo" type="text" v-model="newTodo" class="validate">
-      <label for="add_todo">add todo</label>
-      <p class="right-align">
+    <div class="card-panel">
+      <div class="row">
+        <div class="input-field col s12">
+          <input
+            id="add_todo"
+            type="text"
+            v-model="newTodo"
+            class="validate"
+            @keyup.enter="addTodo"
+          >
+          <label for="add_todo">add todo</label>
+          <errors :errors="err"></errors>
+        </div>
+      </div>
+      <div class="flex align-center space-between">
+        <todo-filter></todo-filter>
         <button
-          class="teal btn right-align"
-          v-on:click="addTodo"
-          v-bind:disabled="disableAddTodo"
+          class="green btn right-align"
+          @click="addTodo"
+          :disabled="disableAddTodo"
         >add</button>
-      </p>
-      <errors :errors="err"></errors>
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +31,7 @@
   import firebase from 'src/firebase';
   import Todo from 'models/Todo';
   import errors from 'components/errors/errors';
+  import todoFilter from 'components/todo/todo-filter';
 
   export default Vue.extend({
     data: function () {
@@ -48,7 +60,8 @@
       }
     },
     components: {
-      errors
+      errors,
+      todoFilter
     }
   });
 </script>
