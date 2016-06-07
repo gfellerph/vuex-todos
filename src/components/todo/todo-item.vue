@@ -145,10 +145,6 @@
       color: #d32f2f;
     }
 
-    @media (max-width: 765px) {
-      display: none;
-    }
-
     .todo-item:hover & {
       opacity: 1;
     }
