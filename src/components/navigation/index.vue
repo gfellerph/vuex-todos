@@ -9,10 +9,13 @@
         <li v-link-active><a v-link="{path: '/', exact: true}">Sparta</a></li>
         <li v-link-active><a v-link="{path: '/todo'}">Todo</a></li>
       </ul>
-      <ul class="side-nav">
+      <ul id="slide-out" class="side-nav">
         <li v-link-active><a v-link="{path: '/', exact: true}">Sparta</a></li>
         <li v-link-active><a v-link="{path: '/todo'}">Todo</a></li>
-      </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse">
+        <i class="mdi-navigation-menu material-icons">menu</i>
+      </a>
     </div>
   </nav>
 </template>
@@ -21,15 +24,13 @@
   import account from 'components/authentication/account';
 
   export default {
-    computed: {
-      currentView () {
-        return this.loggedIn ? 'profile' : 'signin';
-      }
-    },
-    vuex: {
-      getters: {
-        loggedIn: (state) => state.auth.loggedIn
-      }
+
+    /**
+     * Initialize materialize navigation
+     * @return {undefined}
+     */
+    ready () {
+      $(".button-collapse").sideNav();
     },
     components: {
       account
@@ -49,7 +50,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 2;
+      z-index: 1000; // More than materialize nav open overlay
     }
 
     a + a {
