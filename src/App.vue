@@ -21,4 +21,8 @@
 
 <style lang="scss">
   @import 'styles/index';
+
+  #vue-app {
+    overflow: hidden;
+  }
 </style>
