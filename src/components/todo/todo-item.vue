@@ -144,7 +144,7 @@
               this.panshift = 0;
             }
 
-            var modifier = (e.offsetDirection == 4) ? 1 : -1;
+            const modifier = (e.offsetDirection == 4) ? 1 : -1;
             this.panshift = itemWidth * modifier;
           } else {
 
