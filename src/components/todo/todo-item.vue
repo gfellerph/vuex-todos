@@ -79,9 +79,7 @@
           transform: `translateX(${this.panshift}px)`,
           transition: (this.applyTransition) ? 'transform 500ms' : 'none'
         }
-      }
-    },
-    methods: {
+      },
 
       /**
        * Check if transition should be applied or not
@@ -90,6 +88,8 @@
       applyTransition () {
         return this.panshift == 0 || Math.abs(this.panshift) >= window.innerWidth;
       },
+    },
+    methods: {
 
       /**
        * Toggle this todo on firebase
@@ -122,11 +122,11 @@
        */
       onPan (e) {
         if (e.isFinal) {
-          const itemWidth = window.innerWidth;
+          const winWidth = window.innerWidth;
 
           // Panup, this was the last pan event, decide what to do with
           // the todo
-          if (Math.abs(e.overallVelocityX) > 1 || Math.abs(this.panshift) > itemWidth * 0.33) {
+          if (Math.abs(e.overallVelocityX) > 1 || Math.abs(this.panshift) > winWidth * 0.4) {
 
             // Panned strong or more than 50%, check whether to toggle
             // or delete
@@ -145,7 +145,7 @@
             }
 
             const modifier = (e.offsetDirection == 4) ? 1 : -1;
-            this.panshift = itemWidth * modifier;
+            this.panshift = winWidth * modifier;
           } else {
 
             // Not panned enough, do nothing
