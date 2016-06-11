@@ -32,6 +32,6 @@
 
 <style>
   .profile {
-    line-height: 1.5;
+    line-height: 1.8;
   }
 </style>
