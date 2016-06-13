@@ -35,7 +35,7 @@
                         class="btn-flat waves-effect"
                     >sign up</a>
                     <button
-                        class="btn green waves-effect waves-light"
+                        class="btn cyan waves-effect waves-light"
                         type="submit"
                         :disabled="isEmpty || isLoading"
                         @click="login"
