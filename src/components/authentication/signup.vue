@@ -72,7 +72,7 @@
                         :disabled="$sign_up.invalid || loading"
                         @click="submit"
                         type="submit"
-                        class="btn green waves-effect waves-light"
+                        class="btn cyan waves-effect waves-light"
                     >Sign up</button>
                 </p>
             </form>

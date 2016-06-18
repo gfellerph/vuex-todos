@@ -41,12 +41,21 @@
       }
     },
     computed: {
-      disableAddTodo: function () {
+
+      /**
+       * Check if we can add a todo
+       * @return {Boolean} Can we add?
+       */
+      disableAddTodo () {
         return this.newTodo.length == 0;
       }
     },
     methods: {
-      addTodo: function () {
+
+      /**
+       * Add a todo to firebase
+       */
+      addTodo () {
         const newTodo = new Todo(this.newTodo);
         firebase
           .database()
@@ -56,6 +65,8 @@
             // Write failed, print error
             this.err.push(err.message);
           });
+
+        // Reset input
         this.newTodo = '';
       }
     },

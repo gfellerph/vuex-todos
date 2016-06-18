@@ -1,12 +1,24 @@
 <template>
   <div class="todo-item-wrapper">
-    <div v-cloak v-if="panshift >= 0 && !todo.toggled" class="todo-item-reveal todo-item-toggle green">
+    <div
+      v-cloak
+      v-if="panshift >= 0 && !todo.toggled"
+      class="todo-item-reveal todo-item-toggle green"
+    >
       <i class="material-icons">check</i>
     </div>
-    <div v-cloak v-if="todo.toggled && panshift < 0" class="todo-item-reveal todo-item-untoggle amber">
+    <div
+      v-cloak
+      v-if="todo.toggled && panshift < 0"
+      class="todo-item-reveal todo-item-untoggle amber"
+    >
       <i class="material-icons">replay</i>
     </div>
-    <div v-cloak v-if="showDelete" class="todo-item-reveal todo-item-delete red">
+    <div
+      v-cloak
+      v-if="showDelete"
+      class="todo-item-reveal todo-item-delete red"
+    >
       <i class="material-icons">delete</i>
       <i class="material-icons">delete</i>
     </div>
@@ -16,7 +28,7 @@
       @click="toggleTodo"
       v-touch:pan="onPan"
       v-touch-options:pan="{direction: 'horizontal', threshold: 5}"
-      :style="style"
+      :style="todoItemStyle"
     >
       <p
         v-bind:class="{toggled:todo.toggled}"
@@ -37,28 +49,52 @@
 
   export default {
     props: {
+
+      // Expects a todo object from parent component
       todo: Object
     },
     data () {
       return {
+
+        // Keep panshift as temporary value in memory
         panshift: 0
       }
     },
     computed: {
+
+      /**
+       * Check if the delete background should be shown
+       * @return {Boolean} Should I show delete icon and bg?
+       */
       showDelete () {
         return (this.panshift >= 0) ? this.todo.toggled : !this.todo.toggled;
       },
-      style () {
+
+      /**
+       * Compute inline styles for todo item
+       * @return {Object} Style object to be processed by vue
+       */
+      todoItemStyle () {
         return {
           transform: `translateX(${this.panshift}px)`,
           transition: (this.applyTransition) ? 'transform 500ms' : 'none'
         }
       },
+
+      /**
+       * Check if transition should be applied or not
+       * @return {Boolean} Apply transition?
+       */
       applyTransition () {
         return this.panshift == 0 || Math.abs(this.panshift) >= window.innerWidth;
-      }
+      },
     },
     methods: {
+
+      /**
+       * Toggle this todo on firebase
+       * @return {undefined}
+       */
       toggleTodo () {
         firebase
           .database()
@@ -67,19 +103,30 @@
             toggled: !this.todo.toggled
           }));
       },
+
+      /**
+       * Delete this todo on firebase
+       * @return {undefined}
+       */
       deleteTodo () {
         firebase
           .database()
           .ref(`todos/${this.todo.id}`)
           .remove();
       },
+
+      /**
+       * Handle pan event on todo item
+       * @param  {HammerEvent} e Hammer JS wrapped event object
+       * @return {undefined}
+       */
       onPan (e) {
         if (e.isFinal) {
-          const itemWidth = window.innerWidth;
+          const winWidth = window.innerWidth;
 
           // Panup, this was the last pan event, decide what to do with
           // the todo
-          if (Math.abs(e.overallVelocityX) > 1 || Math.abs(this.panshift) > itemWidth * 0.33) {
+          if (Math.abs(e.overallVelocityX) > 1 || Math.abs(this.panshift) > winWidth * 0.4) {
 
             // Panned strong or more than 50%, check whether to toggle
             // or delete
@@ -97,8 +144,8 @@
               this.panshift = 0;
             }
 
-            var modifier = (e.offsetDirection == 4) ? 1 : -1;
-            this.panshift = itemWidth * modifier;
+            const modifier = (e.offsetDirection == 4) ? 1 : -1;
+            this.panshift = winWidth * modifier;
           } else {
 
             // Not panned enough, do nothing
